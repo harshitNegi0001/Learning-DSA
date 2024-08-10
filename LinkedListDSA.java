@@ -99,7 +99,7 @@ class MyLinkedList{
 			
 		}
 		head=previous;
-	//	this.printList();
+
 	}
 	public int get(int n){
 		int count=0;
@@ -114,7 +114,7 @@ class MyLinkedList{
 		}
 		return tempNode.data;
 	}
-	//10_aug_2024
+	
 	public void sortList(){//using BubbleSort
 		
 		int length=this.size();
