@@ -55,6 +55,7 @@ class MyLinkedList{
 			System.out.println("Linked list is already empty");
 			return;
 		}
+		
 		Node tempNode=head;
 		while(tempNode.next.next!=null){
 			tempNode=tempNode.next;
@@ -138,6 +139,10 @@ class MyLinkedList{
 		
 	}
 	public void deleteDuplicate(){//work on  only sorted linked list
+		if(!this.isSorted()){
+			System.out.println("Linked list is not sorted, sort first");
+			return;
+		}
 		Node current=head;
 		Node next=current.next;
 		while(next.next!=null){
@@ -155,6 +160,10 @@ class MyLinkedList{
 			
 	}
 	public void insert(int item){//insert element on sorted list
+		if(!this.isSorted()){
+			System.out.println("Linked list is not sorted, sort first");
+			return;
+		}
 		Node tempNode=new Node(item);
 		if(head.data>item){
 			tempNode.next=head;
