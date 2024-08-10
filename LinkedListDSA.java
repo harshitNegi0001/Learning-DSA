@@ -99,7 +99,7 @@ class MyLinkedList{
 			
 		}
 		head=previous;
-		this.printList();
+	//	this.printList();
 	}
 	public int get(int n){
 		int count=0;
@@ -114,7 +114,80 @@ class MyLinkedList{
 		}
 		return tempNode.data;
 	}
+	//10_aug_2024
+	public void sortList(){//using BubbleSort
+		
+		int length=this.size();
+		for(int x=0;x<length-1;x++){
+			
+			if(this.isSorted()){
+				break;
+			}
+			Node current=head;
+			for(int y=0;y<length-1-x;y++){
+				if(current.data>current.next.data){
+					int temp= current.data;
+					current.data=current.next.data;
+					current.next.data=temp;
+				}
+				current=current.next;
+				
+			}
+		}
+		
+		
+	}
+	public void deleteDuplicate(){//work on  only sorted linked list
+		Node current=head;
+		Node next=current.next;
+		while(next.next!=null){
+			if(current.data==next.data){
+				current.next=next.next;
+				next.next=null;
+				next=current.next;
+			}
+			else{
+				current=current.next;
+				next=next.next;
+			}
+		}
+		
+			
+	}
+	public void insert(int item){//insert element on sorted list
+		Node tempNode=new Node(item);
+		if(head.data>item){
+			tempNode.next=head;
+			head=tempNode;
+			
+			return;
+		}
+		Node current=head;
+		while(current!=null){
+			if(current.next==null||current.next.data>item){
+				tempNode.next=current.next;
+				current.next=tempNode;
+				
+				return;
+			}
+			current=current.next;
+			
+		}
+	}
+	public boolean isSorted(){
+		Node current=head;
+		boolean flag=true;
+		while(current.next!=null){
+			if(current.data>current.next.data){
+				flag=false;
+			}
+			current=current.next;
+		}
+		return flag;
+	}
 	
+	
+		
 }
 
 public class Main {
@@ -125,8 +198,8 @@ public class Main {
 		list.add(12);
 		list.addLast(1);//add element at last
 		list.addLast(28);
-		
-		list.printList();
+	//	System.out.println(list.isSorted());
+	//	list.printList();
 		//System.out.println("size of linkedlist is = "+list.size());
 	//	System.out.println("after delete");
 		//list.deleteFirst();//delete first node
@@ -135,7 +208,32 @@ public class Main {
 	//	System.out.println("size of linkedlist is = "+list.size());
 	//	System.out.println(list.search(10));
 	//	list.printReverse();
-		System.out.println(list.get(5));
+	//	System.out.println(list.get(1));
+	
+		list.add(1);
+		list.add(2);
+		list.add(2);
+		list.add(2);
+		list.add(1);
+		list.add(10);
+		list.add(20);
+		list.add(12);
+		list.add(43);
+		list.add(32);
+		list.add(30);
+		list.add(18);
+		list.add(22);
+		list.add(18);
 		
+		list.sortList();
+		list.deleteDuplicate();
+		
+	
+		list.insert(0);
+		list.insert(11);
+		list.insert(102);
+		
+		list.printList();
+		//System.out.println(list.isSorted());
 	}
 }
