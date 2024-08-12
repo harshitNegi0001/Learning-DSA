@@ -16,7 +16,7 @@ class MyLinkedList{
 	public void add(int num){
 		Node newNode= new Node(num);
 		if(this.isEmpty()){
-			this.head=new Node(num);
+			this.head=newNode;
 		}
 		else{
 			newNode.next=head;
@@ -55,7 +55,10 @@ class MyLinkedList{
 			System.out.println("Linked list is already empty");
 			return;
 		}
-		
+		if(head.next==null){
+			head=null;
+			return;
+		}
 		Node tempNode=head;
 		while(tempNode.next.next!=null){
 			tempNode=tempNode.next;
@@ -86,7 +89,7 @@ class MyLinkedList{
 		}
 		return false;
 	}
-	public void printReverse(){
+	public void reverseList(){
 		Node current=head;
 		Node next=null;
 		Node previous=null;
@@ -100,7 +103,7 @@ class MyLinkedList{
 			
 		}
 		head=previous;
-
+	
 	}
 	public int get(int n){
 		int count=0;
@@ -139,13 +142,9 @@ class MyLinkedList{
 		
 	}
 	public void deleteDuplicate(){//work on  only sorted linked list
-		if(!this.isSorted()){
-			System.out.println("Linked list is not sorted, sort first");
-			return;
-		}
 		Node current=head;
 		Node next=current.next;
-		while(next.next!=null){
+		while(current!=null&& current.next!=null){
 			if(current.data==next.data){
 				current.next=next.next;
 				next.next=null;
@@ -160,11 +159,12 @@ class MyLinkedList{
 			
 	}
 	public void insert(int item){//insert element on sorted list
-		if(!this.isSorted()){
-			System.out.println("Linked list is not sorted, sort first");
+		
+		Node tempNode=new Node(item);
+		if(head==null){
+			head=tempNode;
 			return;
 		}
-		Node tempNode=new Node(item);
 		if(head.data>item){
 			tempNode.next=head;
 			head=tempNode;
@@ -185,14 +185,87 @@ class MyLinkedList{
 	}
 	public boolean isSorted(){
 		Node current=head;
-		boolean flag=true;
+		
 		while(current.next!=null){
 			if(current.data>current.next.data){
-				flag=false;
+				return false;
 			}
 			current=current.next;
 		}
-		return flag;
+		return true;
+	}
+	
+	//11_aug_2024
+	public boolean containsLoop(){
+		Node fast = head;
+		Node slow = head;
+		while(fast!=null&& fast.next!=null){
+			fast=fast.next.next;
+			slow=slow.next;
+			if(fast==slow){
+				return true;
+			}
+			
+		}
+		return false;
+		
+	}
+	public void createLoop(){
+		
+		Node current=head;
+		for(int i=0;i<this.size()-1;i++){
+			current=current.next;
+		}
+		current.next=head.next.next.next;
+		return;
+	}
+	
+	public Node findLoopStart(){
+		Node fast = head;
+		Node slow = head;
+		while(fast!=null&& fast.next!=null){
+			fast=fast.next.next;
+			slow=slow.next;
+			if(fast==slow){
+				return getStartNode(slow);
+			}
+			
+		}
+		return null;
+	}
+	public Node getStartNode(Node slow){
+		Node current=head;
+		while(slow!=current){
+			slow=slow.next;
+			current=current.next;
+			
+		}
+		return current;
+	}
+	public void removeLoop(){
+		
+		Node fast = head;
+		Node slow = head;
+		while(fast!=null&& fast.next!=null){
+			fast=fast.next.next;
+			slow=slow.next;
+			if(fast==slow){
+				this.deleteLoop(slow);
+			}
+			
+		}
+		
+	}
+	
+	public void deleteLoop(Node slow){
+		Node current= head;
+		while(slow.next!=current.next){
+			slow=slow.next;
+			current=current.next;
+			
+		}
+		slow.next=null;
+		System.out.println("Loop has been removed");
 	}
 	
 	
@@ -216,7 +289,7 @@ public class Main {
 	//	list.printList();
 	//	System.out.println("size of linkedlist is = "+list.size());
 	//	System.out.println(list.search(10));
-	//	list.printReverse();
+	//	list.reverseList();
 	//	System.out.println(list.get(1));
 	
 		list.add(1);
@@ -228,7 +301,7 @@ public class Main {
 		list.add(20);
 		list.add(12);
 		list.add(43);
-		list.add(32);
+		list.add(43);
 		list.add(30);
 		list.add(18);
 		list.add(22);
@@ -241,8 +314,17 @@ public class Main {
 		list.insert(0);
 		list.insert(11);
 		list.insert(102);
-		
 		list.printList();
-		//System.out.println(list.isSorted());
+		
+		
+		list.createLoop();
+		System.out.println(list.containsLoop());
+		System.out.println(list.findLoopStart().data);
+		list.removeLoop();
+		list.printList();
+		System.out.println(list.containsLoop());
+	
+	
+		
 	}
 }
