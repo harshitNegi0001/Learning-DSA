@@ -268,7 +268,52 @@ class MyLinkedList{
 		System.out.println("Loop has been removed");
 	}
 	
+	// 13 aug 2024
+	public void insertNode(Node temp){
+		
+		if(head==null){
+			
+			temp.next=null;
+			head=temp;
+			return;
+		}
+		if(temp.data<head.data){
+			temp.next=head;
+			head=temp;
+			return;
+			
+		}
+		
+		Node current= this.head;
+		while(current.next!=null){
+			if(temp.data<current.next.data){
+				temp.next=current.next;
+				current.next=temp;
+				return;
+			}
+			current=current.next;
+			
+		}
+		current.next = temp;
+   	 temp.next = null;
+	}
 	
+	
+	public void mergeSortedList(MyLinkedList l){
+		if (!this.isSorted()) {
+    		this.sortList();
+		}
+		if (!l.isSorted()) {
+    		l.sortList();
+		}
+		
+		while(l.head!=null){
+			Node current= l.head;
+			l.head=l.head.next;
+			current.next=null;
+			this.insertNode(current);						
+		}								
+	}
 		
 }
 
@@ -324,7 +369,15 @@ public class Main {
 		list.printList();
 		System.out.println(list.containsLoop());
 	
-	
+		MyLinkedList list2= new MyLinkedList();
+		list2.add(120);
+		list2.add(50);
+		list2.add(42);
+		list2.add(9);
+		list2.add(3);
+		list2.add(-1);
 		
+		list.mergeSortedList(list2);
+		list.printList();
 	}
 }
