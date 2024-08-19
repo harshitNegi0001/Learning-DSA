@@ -24,9 +24,10 @@ public class QueuePractice1 {
 		int n= sc.nextInt();
 		
 		String[] str = binaryNumber(n);
-		System.out.println("1 to "+n+" binary numbers : ");
+		System.out.println("0 to "+n+" binary numbers : ");
 		for(String item: str){
 			System.out.println(item);
 		}
+		sc.close();
 	}
 }
