@@ -41,9 +41,13 @@ class MyBinarySearchTree{
 					return;
 				}
 				current=current.right;
+			}
+			else{
+				return;
 			}		
 		}
 	}
+	
 	public void inOrder(){
 		inOrder(this.root);
 		System.out.print("\n");
@@ -98,16 +102,16 @@ class MyBinarySearchTree{
 		}
 		System.out.print("\n");
 	}
-	public int hight(){
-		return hight(this.root);
+	public int height(){
+		return height(this.root);
 	}
-	public int hight(TreeNode root){
+	public int height(TreeNode root){
 		if(root==null){
 			return 0;
 		}
-		int hLeft= hight(root.left);
-		int hRight= hight(root.right);
-		return(hLeft<hRight)?hRight+1:hLeft+1;
+		int hLeft= height(root.left);
+		int hRight= height(root.right);
+		return Math.max(hRight,hLeft)+ 1;
 	}
 	public boolean search(int key){
 		return (search(this.root,key)!=null)? true : false;
@@ -146,7 +150,7 @@ public class BinaryTreeImplementation {
         tree.postOrder();
         System.out.println("binary tree in levelOrder : ");
         tree.levelOrder();
-        System.out.println("hight of tree is : "+tree.hight());
+        System.out.println("height of tree is : "+tree.height());
         System.out.println("Nodes in tree = "+tree.size);
         
         System.out.println("20 present in tree : "+tree.search(20));
