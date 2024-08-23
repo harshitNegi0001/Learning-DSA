@@ -51,12 +51,13 @@ class MyBinarySearchTree{
 */
 	public void insert(int data){
 		this.root=insert(this.root,data);
+		size++;
 	}
 	
 	public TreeNode insert(TreeNode root,int data){
 		
 		if(root==null){
-			size++;
+			
 			root=new TreeNode(data);
 			
 		}
@@ -73,6 +74,7 @@ class MyBinarySearchTree{
 	
 	public void delete(int key){
 		this.root=delete(this.root,key);
+		size--;
 	}
 	
 	public TreeNode delete(TreeNode root,int key){
@@ -105,6 +107,7 @@ class MyBinarySearchTree{
 				root.right=delete(root.right,IS.data);
 			}
 		}
+		
 		return root;
 	}
 	public TreeNode inorderSuccessor(TreeNode root){
@@ -191,10 +194,28 @@ class MyBinarySearchTree{
 		}
 		else{
 			return search(root.left,key);
-		}
-		
+		}		
 	}
-	
+	public void printInRange(int start, int end){
+		printInRange(this.root,start,end);
+		System.out.println("");
+	}
+	public void printInRange(TreeNode root,int start,int end){
+		if(root==null){
+			return;
+		}
+		if(root.data>=start && root.data<=end){
+			printInRange(root.left,start,end);
+			System.out.print(root.data+" ");
+			printInRange(root.right,start,end);
+		}
+		else if(root.data>end){
+			printInRange(root.left,start,end);
+		}
+		else{
+			printInRange(root.right,start,end);
+		}
+	}
 	
 }
 
@@ -223,8 +244,11 @@ public class BinaryTreeImplementation {
         System.out.println("20 present in tree : "+tree.search(20));
         System.out.println("24 present in tree : "+tree.search(24));
         */
-        tree.delete(40);
+        System.out.println("data present in tree between 20 to 50 :");
+        tree.printInRange(20,50);
+       /* tree.delete(40);
         System.out.println("binary tree in inOrder (after delete 40 from BST) : ");
         tree.inOrder();
+        */
 	}
 }
