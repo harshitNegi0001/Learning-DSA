@@ -17,6 +17,7 @@ class MyBinarySearchTree{
 		root=null;
 		size=0;
 	}
+	/*
 	public void insert(int data){
 		TreeNode newNode = new TreeNode(data);
 		if(root==null){
@@ -47,7 +48,72 @@ class MyBinarySearchTree{
 			}		
 		}
 	}
+*/
+	public void insert(int data){
+		this.root=insert(this.root,data);
+	}
 	
+	public TreeNode insert(TreeNode root,int data){
+		
+		if(root==null){
+			size++;
+			root=new TreeNode(data);
+			
+		}
+		else if(data<root.data){
+			root.left = insert(root.left,data);
+			
+		}
+		else if(data>root.data){
+			root.right = insert(root.right,data);
+		
+		}		
+		return root;				
+	}
+	
+	public void delete(int key){
+		this.root=delete(this.root,key);
+	}
+	
+	public TreeNode delete(TreeNode root,int key){
+		if(root==null){
+			return null;
+		}
+		if(key<root.data){
+			root.left=delete(root.left,key);
+		}
+		else if(key>root.data){
+			root.right = delete(root.right,key);
+		}
+		else{
+			//key matched with root.data or root=null
+			//case 1 if node is a leaf
+			if(root.left==null && root.right==null){
+				root=null;
+			}
+			//case 2 if node has only one child
+			else if (root.left==null){
+				root=root.right;
+			}
+			else if (root.right==null){
+				root=root.left;
+			}			
+			//case 3 if node has two child
+			else{
+				TreeNode IS = inorderSuccessor(root.right);
+				root.data=IS.data;
+				root.right=delete(root.right,IS.data);
+			}
+		}
+		return root;
+	}
+	public TreeNode inorderSuccessor(TreeNode root){
+		while(root.left!=null){
+			root=root.left;
+		}
+		return root;
+	}
+		
 	public void inOrder(){
 		inOrder(this.root);
 		System.out.print("\n");
@@ -129,6 +195,7 @@ class MyBinarySearchTree{
 		
 	}
 	
+	
 }
 
 public class BinaryTreeImplementation {
@@ -144,7 +211,7 @@ public class BinaryTreeImplementation {
         
         System.out.println("binary tree in inOrder : ");
         tree.inOrder();
-        System.out.println("binary tree in preOrder : ");
+        /*System.out.println("binary tree in preOrder : ");
         tree.preOrder();
         System.out.println("binary tree in postOrder : ");
         tree.postOrder();
@@ -155,5 +222,9 @@ public class BinaryTreeImplementation {
         
         System.out.println("20 present in tree : "+tree.search(20));
         System.out.println("24 present in tree : "+tree.search(24));
+        */
+        tree.delete(40);
+        System.out.println("binary tree in inOrder (after delete 40 from BST) : ");
+        tree.inOrder();
 	}
 }
