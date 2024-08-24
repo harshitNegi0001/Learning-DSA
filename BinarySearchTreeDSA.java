@@ -216,10 +216,49 @@ class MyBinarySearchTree{
 			printInRange(root.right,start,end);
 		}
 	}
-	
+	public void printRootToLeafPath(){
+		ArrayList<Integer> arr=new ArrayList<>();
+		printRootToLeafPath(this.root,arr);
+	}
+	public void printRootToLeafPath(TreeNode root,ArrayList<Integer> arr){
+		if(root==null){
+			return;
+		}
+				
+		arr.add(root.data);
+		if(root.left==null&&root.right==null){
+			for(int item:arr){
+				System.out.print(item+"->");
+			}
+			System.out.println("null");
+		}	
+		else{
+			printRootToLeafPath(root.left,arr);			
+			printRootToLeafPath(root.right,arr);			
+		}
+		arr.remove(arr.size()-1);
+	}
+	public TreeNode LCA(int p,int q){
+	   return lowestCommonAncestor(this.root,p,q);
+	}
+    public TreeNode lowestCommonAncestor(TreeNode root,int p,int q){
+        if(root==null){
+            return null;
+        }
+        if(p<root.data && q<root.data){
+            return lowestCommonAncestor(root.left,p,q);
+        } 
+        else if (p>root.data && q>root.data){
+            return lowestCommonAncestor(root.right,p,q);
+        }         
+        else {
+            return root;
+        }
+    }
 }
 
 public class BinaryTreeImplementation {
+	
 	public static void main(String[] args) {
 		MyBinarySearchTree tree = new MyBinarySearchTree();
 		tree.insert(40);
@@ -244,11 +283,19 @@ public class BinaryTreeImplementation {
         System.out.println("20 present in tree : "+tree.search(20));
         System.out.println("24 present in tree : "+tree.search(24));
         */
-        System.out.println("data present in tree between 20 to 50 :");
-        tree.printInRange(20,50);
+       // System.out.println("data present in tree between 20 to 50 :");
+      //  tree.printInRange(20,50);
        /* tree.delete(40);
         System.out.println("binary tree in inOrder (after delete 40 from BST) : ");
         tree.inOrder();
         */
+        System.out.println("Path : ");
+        tree.printRootToLeafPath();
+        
+        TreeNode temp= tree.LCA(10,30);
+        System.out.print("Lowest Common Ancestor of(10,30) for this tree :");
+        if(temp!=null){
+        	System.out.println(temp.data);
+        }
 	}
 }
