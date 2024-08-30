@@ -82,6 +82,31 @@ public class SortingAlgo {
 		}		
 	}
 	
+	public static void quickSort(int [] arr){
+		quickSort(arr,0,arr.length-1);
+	}
+	public static void quickSort(int[] arr,int low, int high){
+		if(low>=high){
+			return;
+		}
+		int i,j,pivot;
+		pivot=arr[high];
+		i=low;
+		j=low;
+		
+		while(i<=high){
+			if(arr[i]<=pivot){
+				swap(arr,i,j);
+				j++;
+			}
+			i++;
+		}
+		j--;
+		
+		quickSort(arr,low,j-1);
+		quickSort(arr,j+1,high);
+		
+	}
 	public static void swap(int [] arr,int i1,int i2){
 		int temp= arr[i1];
 		arr[i1]= arr[i2];
@@ -107,7 +132,7 @@ public class SortingAlgo {
 	public static void main(String[] args) {
 		int [] arr={1,0,5,8,3,10,2,14,16};
 		
-		mergeSort(arr);
+		quickSort(arr);
 		print(arr);
 	}
 }
