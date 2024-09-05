@@ -79,9 +79,20 @@ public class OverlappingIntervals {
 		l1.add(i5);
 		l1.add(i6);
 		List <Interval> mList = merge(l1);
+		System.out.println("Time intervals : ");
+		for (Interval interval : l1) {
+			System.out.println(interval);
+		}
+		System.out.println("After merge : ");
+		for (Interval interval :mList ) {
+			System.out.print(interval + " ");
+		}
+		System.out.println();
 		List <Interval> l2 = insert(mList,new Interval(3,8));
+		System.out.println("After insert {3,8} : ");
 		for (Interval interval : l2) {
 			System.out.print(interval + " ");
 		}
+		System.out.println();
 	}
 }
