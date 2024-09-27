@@ -98,19 +98,53 @@ public class SolutionsOfGFGPractice {
 	  	return (isBST(root.left,minVal,root.data)&& isBST(root.right,root.data,maxVal));
 	  	//checks left and right bt for bst
 	  }*/
-	ArrayList<Integer> leftView(Node root) {
+	/*	ArrayList<Integer> leftView(Node root) {
+			ArrayList<Integer> result = new ArrayList<>();
+			if (root == null) return result;
+			leftView(root, 0, result);
+			return result;
+		}
+		void leftView(Node root, int level, ArrayList result) {
+			if (result.size() == level) result.add(root.data);
+			if (root.left != null) leftView(root.left, level + 1, result);
+			if (root.right != null) leftView(root.right, level + 1, result);
+		}
+	*/
+	/*public ArrayList<Integer> max_of_subarrays(int k, int arr[]) {
 		ArrayList<Integer> result = new ArrayList<>();
-		if (root == null) return result;
-		leftView(root, 0, result);
+		Deque<Integer> deque = new LinkedList<>();
+		for (int i = 0; i < arr.length; i++) {
+			if (!deque.isEmpty() && deque.getFirst() == i - k) deque.removeFirst();
+			while (!deque.isEmpty() && arr[deque.getLast()] <= arr[i])deque.removeLast();
+			deque.add(i);
+			if (i >= k - 1)result.add(arr[deque.getFirst()]);
+		}
 		return result;
-	}
-	void leftView(Node root, int level, ArrayList result) {
-		if (result.size() == level) result.add(root.data);
-		if (root.left != null) leftView(root.left, level + 1, result);
-		if (root.right != null) leftView(root.right, level + 1, result);
-	}
+	}*/
+	/*int maxSubarraySum(int[] arr) {
+		int currentSum=0;
+		int maxSum= Integer.MIN_VALUE;
 
-
+		for(int i=0;i<arr.length;i++){
+		      if(currentSum<=0) currentSum=arr[i];
+		      else currentSum+=arr[i];
+		      maxSum=Math.max(maxSum,currentSum);
+		}
+	    return maxSum;
+	}*/
+	public void sort012(ArrayList<Integer> arr) {
+		int i = 0, j = 0, k = arr.size() - 1;
+		while (j < k) {
+			if (arr.get(j) == 0) swap(arr, j++, i++);
+			else if (arr.get(j) == 1) j++;
+			else swap(arr, j, k--);
+		}
+	}
+	public void swap(ArrayList<Integer> arr, int i1, int i2) {
+		int temp = arr.get(i1);
+		arr.set(i1, arr.get(i2));
+		arr.set(i2, temp);
+	}
 	public static void main(String[] args) {
 
 	}
