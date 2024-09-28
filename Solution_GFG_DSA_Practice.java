@@ -132,19 +132,71 @@ public class SolutionsOfGFGPractice {
 		}
 	    return maxSum;
 	}*/
-	public void sort012(ArrayList<Integer> arr) {
-		int i = 0, j = 0, k = arr.size() - 1;
-		while (j < k) {
-			if (arr.get(j) == 0) swap(arr, j++, i++);
-			else if (arr.get(j) == 1) j++;
-			else swap(arr, j, k--);
+	/*	public void sort012(ArrayList<Integer> arr) {
+			int i = 0, j = 0, k = arr.size() - 1;
+			while (j < k) {
+				if (arr.get(j) == 0) swap(arr, j++, i++);
+				else if (arr.get(j) == 1) j++;
+				else swap(arr, j, k--);
+			}
 		}
-	}
-	public void swap(ArrayList<Integer> arr, int i1, int i2) {
-		int temp = arr.get(i1);
-		arr.set(i1, arr.get(i2));
-		arr.set(i2, temp);
-	}
+		public void swap(ArrayList<Integer> arr, int i1, int i2) {
+			int temp = arr.get(i1);
+			arr.set(i1, arr.get(i2));
+			arr.set(i2, temp);
+		}*/
+	//public int help(int i,int k, int[] arr,int[] dp){
+//		if(i==arr.length-1) return 0;
+//		if(dp[i]!=-1) return dp[i];
+//		int ans = Integer.MAX_VALUE;
+//		for(int j= i+1; j<=i+k&&j<arr.length;j++){
+//			int cost = Math.abs(arr[i]-arr[j])+help(j,k,arr,dp);
+//			ans=Math.min(ans,cost);
+//		}
+//
+//		return dp[i]=ans;
+//	}
+//	public int minimizeCost(int k, int arr[]) {
+//        int [] dp= new int[arr.length-1];
+//        Arrays.fill(dp,-1);
+//        return help(0,k,arr,dp);
+//    }
+
+	
+    // arr[]: Input Array
+    // N : Size of the Array arr[]
+    // Function to count inversions in the array.
+    //static long inv;
+//    static void mergeSort(long [] arr,int l,int r){
+//        if(l>=r)return;
+//        int mid = l+(r-l)/2;
+//        mergeSort(arr,l,mid);
+//        mergeSort(arr,mid+1,r);
+//        merge(arr,l,mid,r);
+//    }
+//    static void merge(long [] arr,int l, int mid, int r){
+//        long[] c= new long[r-l+1];
+//        int i=l,j=mid+1;
+//        int k=0;
+//        while(i<=mid&&j<=r){
+//            if(arr[i]>arr[j]) {
+//                inv+=mid-i+1;
+//                c[k++]=arr[j++];
+//            }
+//            else c[k++]=arr[i++];
+//        }
+//        while(i<=mid) c[k++]=arr[i++];
+//        while(j<=r) c[k++]=arr[j++];
+//        int t=0;
+//        for(int t1=l;t1<=r;t1++) arr[t1]=c[t++];
+//    }
+//    static long inversionCount(long arr[]) {
+//        // Your Code Here
+//        inv=0;
+//        mergeSort(arr,0,arr.length-1);
+//        return inv;
+//    }
+
 	public static void main(String[] args) {
 
 	}
