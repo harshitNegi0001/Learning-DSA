@@ -162,11 +162,11 @@ public class SolutionsOfGFGPractice {
 //        return help(0,k,arr,dp);
 //    }
 
-	
-    // arr[]: Input Array
-    // N : Size of the Array arr[]
-    // Function to count inversions in the array.
-    //static long inv;
+
+	// arr[]: Input Array
+	// N : Size of the Array arr[]
+	// Function to count inversions in the array.
+	//static long inv;
 //    static void mergeSort(long [] arr,int l,int r){
 //        if(l>=r)return;
 //        int mid = l+(r-l)/2;
@@ -196,7 +196,38 @@ public class SolutionsOfGFGPractice {
 //        mergeSort(arr,0,arr.length-1);
 //        return inv;
 //    }
-
+	//public long multiplyTwoLists(Node first, Node second) {
+//		return (getValue(first) * getValue(second)) % 1000000007;
+//	}
+//	public long getValue(Node head) {
+//		long value = 0;
+//		Node current = head;
+//		while (current != null) {
+//			value = (value * 10 + current.data) % 1000000007;
+//			current = current.next;
+//		}
+//		return value;
+//	}
+	int getKthFromLast(Node head, int k) {
+        head=reverse(head);
+        Node current = head;
+        for(int i=1;i<k;i++){
+        	if(current!=null) current=current.next;
+        	else return -1;
+        }
+        return (current!=null)?current.data:-1;       
+    }
+    Node reverse(Node head){
+    	Node pre = null;
+    	Node next =null;
+    	while(head!=null){
+    		next=head.next;
+    		head.next=pre;
+    		pre=head;
+    		head=next;
+    	}
+    	return pre;
+    }
 	public static void main(String[] args) {
 
 	}
