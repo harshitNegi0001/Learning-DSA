@@ -208,26 +208,94 @@ public class SolutionsOfGFGPractice {
 //		}
 //		return value;
 //	}
-	int getKthFromLast(Node head, int k) {
-        head=reverse(head);
-        Node current = head;
-        for(int i=1;i<k;i++){
-        	if(current!=null) current=current.next;
-        	else return -1;
-        }
-        return (current!=null)?current.data:-1;       
-    }
-    Node reverse(Node head){
-    	Node pre = null;
-    	Node next =null;
-    	while(head!=null){
-    		next=head.next;
-    		head.next=pre;
-    		pre=head;
-    		head=next;
-    	}
-    	return pre;
-    }
+	/*	int getKthFromLast(Node head, int k) {
+	        head=reverse(head);
+	        Node current = head;
+	        for(int i=1;i<k;i++){
+	        	if(current!=null) current=current.next;
+	        	else return -1;
+	        }
+	        return (current!=null)?current.data:-1;
+	    }
+	    Node reverse(Node head){
+	    	Node pre = null;
+	    	Node next =null;
+	    	while(head!=null){
+	    		next=head.next;
+	    		head.next=pre;
+	    		pre=head;
+	    		head=next;
+	    	}
+	    	return pre;
+	    }
+	    */
+	/*    public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
+	        boolean[] visited= new boolean[adj.size()];
+	        for(int i =0; i<adj.size();i++){
+	        	if(!visited[i]){
+	        		if(dfs(i,adj,visited,-1)) return true;
+	        	}
+	        }
+	        return false;
+	    }
+	    public boolean dfs(int v,ArrayList<ArrayList<Integer>> adj,boolean [] visited,int parent){
+	    	for(int node : adj.get(v)){
+	    		if(!visited[node]){
+	    			if(dfs(node,adj,visited,v))return true;
+	    		}
+	    		else if (node!=parent) return true;
+	    	}
+	    	return false;
+	    }*/
+
+	/* public List<Integer> findMajority(List<Integer> nums) {
+	     Collections.sort(nums);
+	     int vote=1,pre=-1,len=nums.size(),curr;
+	     List<Integer> result = new ArrayList<>(3);
+	     for(int i=0;i<len;i++){
+	     	curr = nums.get(i);
+	     	if(curr==pre) vote++;
+	     	else{
+	     		vote=1;
+	     		pre=curr;
+	     	}
+	     	if(vote>len/3.0 && !result.contains(curr))result.add(curr);
+	     }
+	     if(result.isEmpty()) result.add(-1);
+	     return result;
+	 }*/
+
+	/*	public static ArrayList<ArrayList<Integer>> getPairs(int[] arr) {
+			ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+
+			int n = arr.length;
+			Arrays.sort(arr);
+			Map <Integer, Boolean> map = new HashMap<>();
+			for (int e : arr) {
+				if (e <= 0 && !map.containsKey(e)) map.put(e * -1, false);
+				else if (e >= 0) {
+					if (map.containsKey(e) && !map.get(e)) {
+						ArrayList<Integer> helper = new ArrayList<>();
+						helper.add(e * -1);
+						helper.add(e);
+						result.add(helper);
+						map.put(e, true);
+					}
+				}
+			}
+
+			Collections.reverse(result);
+			return result;
+		}*/
+
+	static void rotateArr(int arr[], int d) {
+		d = d % arr.length;
+		int [] helper = new int [d];
+		for (int i = 0; i < d; i++) helper[i] = arr[i];
+		for (int i = d; i < arr.length; i++)arr[i - d] = arr[i];
+		for (int i = arr.length - d, j = 0; i < arr.length && j < d; i++, j++) arr[i] = helper[j];
+	}
+
 	public static void main(String[] args) {
 
 	}
