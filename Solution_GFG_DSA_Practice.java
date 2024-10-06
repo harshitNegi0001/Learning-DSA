@@ -288,14 +288,62 @@ public class SolutionsOfGFGPractice {
 			return result;
 		}*/
 
-	static void rotateArr(int arr[], int d) {
-		d = d % arr.length;
-		int [] helper = new int [d];
-		for (int i = 0; i < d; i++) helper[i] = arr[i];
-		for (int i = d; i < arr.length; i++)arr[i - d] = arr[i];
-		for (int i = arr.length - d, j = 0; i < arr.length && j < d; i++, j++) arr[i] = helper[j];
+	/*	static void rotateArr(int arr[], int d) {
+			d = d % arr.length;
+			int [] helper = new int [d];
+			for (int i = 0; i < d; i++) helper[i] = arr[i];
+			for (int i = d; i < arr.length; i++)arr[i - d] = arr[i];
+			for (int i = arr.length - d, j = 0; i < arr.length && j < d; i++, j++) arr[i] = helper[j];
+		}
+	*/
+/*	Node reverse(Node head) {
+		if (head.next == head)return head; //when only one node present
+		Node previous = null;
+		Node next = head.next;
+		while (next != null) {
+			head.next = previous;
+			previous = head;
+			head = next;
+			next = head.next;
+		}
+		head.next = previous;
+		head = previous;
+		return head;
 	}
-
+	Node deleteNode(Node head, int key) {
+		Node previous = head;
+		Node current = head.next;
+		while (current != head) {
+			if (current.data == key) {
+				previous.next = current.next;
+				current.next = null;
+				current = previous.next;
+				return reverse(head);
+			}
+			previous = previous.next;
+			current = current.next;
+		}
+		if (current.data == key) { //in the case (head.data==key)
+			head = current.next;
+			previous.next = head;
+			current.next = null;
+		}
+		return reverse(head);
+	}*/
+	public long findSmallest(int[] arr) {
+        long num=1;
+        for(int e: arr){
+            if(e<=num)num+=e;
+            else break;
+        }
+        return num;
+        
+    }
+    int isPalindrome(String S) {
+        char []arr = S.toCharArray();
+        for(int i=0; i<S.length()/2;i++)if(arr[i]!=arr[arr.length-1-i])return 0;
+        return 1;
+    }
 	public static void main(String[] args) {
 
 	}
