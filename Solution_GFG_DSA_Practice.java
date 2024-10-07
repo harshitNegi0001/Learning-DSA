@@ -330,7 +330,7 @@ public class SolutionsOfGFGPractice {
 		}
 		return reverse(head);
 	}*/
-	public long findSmallest(int[] arr) {
+/*	public long findSmallest(int[] arr) {
         long num=1;
         for(int e: arr){
             if(e<=num)num+=e;
@@ -343,8 +343,64 @@ public class SolutionsOfGFGPractice {
         char []arr = S.toCharArray();
         for(int i=0; i<S.length()/2;i++)if(arr[i]!=arr[arr.length-1-i])return 0;
         return 1;
+    }*/
+ /*   public int numIslands(char[][] grid) {
+        int ans=0;
+        int n=grid.length;
+        int m=grid[0].length;
+        boolean [][] visited= new boolean [n][m];
+        for(int i=0;i<n;i++){
+        	for(int j=0;j<m;j++){
+        		if(grid[i][j]=='1'&&!visited[i][j]){
+        			ans++;
+        			visit(grid,i,j,visited);
+        		}
+        	}
+        }
+        return ans;
     }
+    void visit(char[][] grid, int i, int j, boolean[][] visited){
+    	if(i<0||i>=grid.length||j<0||j>=grid[0].length||visited[i][j]) return;
+    	visited[i][j]=true;
+    	if(grid[i][j]=='1'){
+    		visit(grid,i,j+1,visited);//for right check
+    		visit(grid,i,j-1,visited);//for left check
+    		visit(grid,i+1,j,visited);//for down check
+    		visit(grid,i-1,j,visited);//for up check
+    		visit(grid,i+1,j+1,visited);//for right down check
+    		visit(grid,i-1,j+1,visited);//for right up check
+    		visit(grid,i+1,j-1,visited);//for left down check
+    		visit(grid,i-1,j-1,visited);//for left up check
+    	}
+    }*/
+    
+/*    public List<String> find_permutation(String S) {
+        List<String> list= new LinkedList<>();
+        permutation(S,0,S.length()-1,list);
+        Set<String> set = new LinkedHashSet<>(list);
+        
+        list.clear();
+        list.addAll(set);
+        Collections.sort(list);
+        return list;
+    }
+    public void permutation(String S,int l,int r,List<String> list){
+   	 if(l==r)list.add(S);
+   	 else for(int i=l;i<=r;i++){
+   	 	S=swap(S,l,i);
+   	 	permutation(S,l+1,r,list);
+   	 	S=swap(S,l,i);
+   	 }
+    }
+    String swap(String S, int i,int j){
+    	char[] ch = S.toCharArray();
+    	char temp= ch[i];
+    	ch[i]=ch[j];
+    	ch[j]=temp;
+    	
+    	return S.valueOf(ch);
+    }*/
 	public static void main(String[] args) {
-
+		
 	}
 }
