@@ -400,6 +400,21 @@ public class SolutionsOfGFGPractice {
     	
     	return S.valueOf(ch);
     }*/
+    
+/*    public static boolean areIsomorphic(String str1,String str2){
+        if(str1.length()!=str2.length())return false;
+        Map <Character,Character> m = new HashMap<>();
+        char [] s1 = str1.toCharArray();
+        char [] s2 = str2.toCharArray();
+        for(int i=0;i<s1.length;i++){
+        	if(m.containsKey(s1[i])){
+        		if(m.get(s1[i])!=s2[i])return false;
+        	}
+        	else if(m.containsValue(s2[i]))return false;
+        	else m.put(s1[i],s2[i]);
+        }
+        return true;
+    }*/
 	public static void main(String[] args) {
 		
 	}
