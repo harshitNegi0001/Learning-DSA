@@ -415,6 +415,103 @@ public class SolutionsOfGFGPractice {
         }
         return true;
     }*/
+    
+   /* Node removeDuplicates(Node head) {
+        Node curr=head.next;
+        Node previous=head;
+        while(curr!=null){
+        	if(curr.data==previous.data){
+        		Node next=curr.next;
+        		curr.next=null;
+        		curr=next;
+        		previous.next=curr;
+        	}
+        	else{
+        		previous=curr;
+        		curr=curr.next;
+        	}
+        }
+        return head;
+    }*/
+    /*
+    public Node addOne(Node head) {
+        head=reverse(head);
+        Node curr= head;
+        Node pre=head;
+        while(curr!=null){
+            if(curr.data==9){
+                curr.data=0;
+                pre=curr;
+                curr=curr.next;
+            }
+            else{
+                curr.data=curr.data+1;
+                return reverse(head);
+            }
+        }
+        pre.next=new Node(1);
+        return reverse(head);
+    }
+    public Node reverse(Node head) {
+        Node previous = null;
+        Node current = head;
+        Node next = null;
+        
+        while (current != null) {
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+        return previous;
+    }*/
+    
+    
+    
+
+ /*   public static Node reverse(Node node, int k) {
+        if(k==1)return node;
+        int count=1;
+        Node pre= null;
+        Node curr=node;
+        Node next=node;
+        while(next!=null){
+        	if(count==k){
+        		if(pre==null){
+        			node=next;
+        			reverse(curr,next.next);
+        		}
+        		else{
+        		    pre.next=reverse(curr,next.next);
+        		}
+        		pre=curr;
+        		curr=curr.next;
+        		next=curr;
+        		count=1;
+        		
+        	}
+        	else{
+        		count++;
+        		next=next.next;
+        	}
+        }
+        pre.next=reverse(curr,next);
+        
+        return node;
+    }
+    public static Node reverse(Node curr,Node next){
+    	Node n=null;
+    	Node p=next;
+    	while(curr!=next){
+    		n=curr.next;
+    		curr.next=p;
+    		p=curr;
+    		curr=n;
+    	}
+    	return p;
+    }
+*/
+
 	public static void main(String[] args) {
 		
 	}
