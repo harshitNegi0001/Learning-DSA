@@ -46,6 +46,36 @@ public class SolutionOfPOTD {
         return arrlist.get(0);
         
     }*/
+    /* //10_oct_24
+    public int maxDistance(int[] arr) {
+        Map<Integer,Integer> m = new HashMap<>();
+        int max=0;
+        for(int i =0; i<arr.length;i++){
+        	if(!m.containsKey(arr[i]))m.put(arr[i],i);
+        	else{
+        		max=Math.max(max,i-m.get(arr[i]));
+        	}
+        }
+        return max;
+    }
+    */
+    
+/*    //11_oct_24
+    public List<Integer> rearrange(List<Integer> arr) {
+        int i=0;
+        while(i<arr.size()){
+        	int e=arr.get(i);
+        	if(e!=i){
+        		if(e<0||e>=arr.size()||arr.get(e)==e) arr.set(i++,-1);
+        		else{		
+        			arr.set(i,arr.get(e));
+        			arr.set(e,e);
+        		}
+        	}
+        	else i++;
+        }        
+        return arr;
+    }*/
 	public static void main(String[] args) {
 		
 	}
