@@ -76,6 +76,26 @@ public class SolutionOfPOTD {
         }        
         return arr;
     }*/
+    /*
+    //12_oct_24
+    public int pairWithMaxSum(int[] arr) {
+        int maxSum=-1;
+        for(int i=1;i<arr.length;i++)maxSum=Math.max(maxSum,arr[i-1]+arr[i]);
+        return maxSum;
+    }*/
+    /* //13_oct_24
+    public void deleteAlt(Node head) {
+        Node pre=head;
+        Node curr=head.next;
+        while(curr!=null&& curr.next!=null){
+        	pre.next=curr.next;
+        	curr.next=null;
+        	pre=pre.next;
+        	curr=pre.next;
+        }
+        if(curr!=null)pre.next=null;
+    }
+    */
 	public static void main(String[] args) {
 		
 	}
