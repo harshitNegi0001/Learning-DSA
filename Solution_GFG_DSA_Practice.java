@@ -522,6 +522,106 @@ public class SolutionsOfGFGPractice {
         return slow.data;
     }
 */
+/*
+	int size(Node h){
+		int l=0;
+		while(h!=null){
+			h=h.next;
+			l++;
+		}
+		return l;
+	}
+	int intersectPoint(Node head1, Node head2) {
+	   int l1=size(head1);
+	   int l2=size(head2);
+	   if(l1<=l2){
+	   	while(l2>l1){
+	   	    head2=head2.next;
+	   		l2--;
+	   	}
+	   }
+	   else{
+	   	while(l2<l1){
+	   		head1=head1.next;
+	   		l1--;
+	   	}
+	   }
+	   while(head1!=null && head2!=null){
+	   	if(head1==head2) return head1.data;
+	   	head1=head1.next;
+	   	head2=head2.next;
+	   }
+	   return -1;
+    }*/
+    /*
+    public Node rotate(Node head, int k) {
+        Node h=head;
+        Node tail=head;
+        while(tail.next!=null)tail=tail.next;
+        tail.next=head;
+        while(k>0){
+        	head=head.next;
+        	tail=tail.next;
+        	k--;
+        }
+        tail.next=null;
+        return head;
+    }
+    Node reverseList(Node head) {
+        Node curr=head;
+        Node pre=null;
+        Node next=null;
+        while(curr!=null){
+            next=curr.next;
+            curr.next=pre;
+            pre=curr;
+            curr=next;
+        }
+        return pre;
+    }
+    static Node addTwoLists(Node num1, Node num2) {
+       // num1=removeLeadingZero(num1);
+       // num2=removeLeadingZero(num2);
+        num1=reverseList(num1);
+        num2=reverseList(num2);
+        Node head= null;
+        int carry=0;
+        int sum;
+        while(num1!=null || num2!=null){
+        	sum=0;
+        	if(num1!=null){
+        		sum+=num1.data;
+        		num1=num1.next;
+        	}
+        	if(num2!=null){
+        		sum+=num2.data;
+        		num2=num2.next;
+        	}
+        	sum+=carry;
+        	carry=0;
+        	if(sum>9){
+        		carry=sum/10;
+        		sum%=10;
+        	}
+        	Node temp= new Node(sum);
+        	temp.next=head;
+        	head=temp;
+        }
+        while(carry>0){
+            int n=carry%10;
+            Node temp=new Node(n);
+            temp.next=head;
+            head=temp;
+            carry/=10;
+        }
+        
+        return removeLeadingZero(head);
+    }
+    static Node removeLeadingZero(Node head){
+    	while(head!=null && head.data==0)head=head.next;
+    	return head;
+    }
+    */
 	public static void main(String[] args) {
 		
 	}

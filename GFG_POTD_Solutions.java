@@ -96,6 +96,16 @@ public class SolutionOfPOTD {
         if(curr!=null)pre.next=null;
     }
     */
+    /* //14_oct_24
+    public int getCount(Node head) {
+        int count=0;
+        while(head!=null){
+            count++;
+            head=head.next;
+        }
+        return count;
+    }
+    */
 	public static void main(String[] args) {
 		
 	}
