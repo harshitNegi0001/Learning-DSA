@@ -622,6 +622,14 @@ public class SolutionsOfGFGPractice {
     	return head;
     }
     */
+    /*
+    void deleteNode(Node node) {
+        Node next=node.next;
+        node.data=next.data;
+        node.next=next.next;
+        next.next=null;
+    }
+    */
 	public static void main(String[] args) {
 		
 	}

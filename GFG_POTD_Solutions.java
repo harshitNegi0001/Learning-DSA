@@ -106,6 +106,21 @@ public class SolutionOfPOTD {
         return count;
     }
     */
+    /* //15_oct_24
+    static int subArraySum(int arr[], int tar) {
+        int ans=0;
+        int sum=0;
+        Map<Integer,Integer> map=new  HashMap<>();
+        
+        for(int e: arr){
+            sum+=e;
+            if(sum==tar)ans++;
+            map.put(sum,map.getOrDefault(sum,0)+1);
+            if(map.containsKey(sum-tar))ans+=map.get(sum-tar);
+        }
+        return ans;
+	}
+	*/
 	public static void main(String[] args) {
 		
 	}
