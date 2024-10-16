@@ -121,6 +121,25 @@ public class SolutionOfPOTD {
         return ans;
 	}
 	*/
+	/*
+	//16_oct_24
+	public boolean checkSorted(List<Integer> arr) {
+        int count=0;
+        int i=0;
+        while(i<arr.size()){
+            if(arr.get(i)==i+1)i++;
+            else {
+                swap(arr,i,arr.get(i)-1);
+                count++;
+            }
+            if(count>2)return false;
+        }
+        return (count==2||count==0)?true:false;
+    }
+    public void swap(List<Integer> arr,int i,int j ){
+        arr.set(i,arr.get(j));
+        arr.set(j,j+1);
+    }*/
 	public static void main(String[] args) {
 		
 	}
