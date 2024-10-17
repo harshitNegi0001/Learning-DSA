@@ -140,6 +140,22 @@ public class SolutionOfPOTD {
         arr.set(i,arr.get(j));
         arr.set(j,j+1);
     }*/
+    /*
+    //27_oct_24
+    Node[] alternatingSplitList(Node head) {
+        Node curr1=head;
+        Node curr2=head.next;
+        Node [] result={ curr1, curr2};
+        while(curr1!=null&&curr1.next!=null){
+            curr1.next=curr1.next.next;
+            curr1=curr1.next;
+            if(curr1!=null){
+                curr2.next=curr2.next.next;
+                curr2=curr2.next;
+            }
+        }
+        return result;
+    }*/
 	public static void main(String[] args) {
 		
 	}
