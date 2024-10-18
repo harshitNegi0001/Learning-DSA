@@ -141,7 +141,7 @@ public class SolutionOfPOTD {
         arr.set(j,j+1);
     }*/
     /*
-    //27_oct_24
+    //17_oct_24
     Node[] alternatingSplitList(Node head) {
         Node curr1=head;
         Node curr2=head.next;
@@ -156,6 +156,14 @@ public class SolutionOfPOTD {
         }
         return result;
     }*/
+    /*
+    //18_oct_24
+    int getSingle(int arr[]) {
+        int numx=0;
+        for(int num:arr)numx=numx^num;
+        return numx;
+    }
+    */
 	public static void main(String[] args) {
 		
 	}
