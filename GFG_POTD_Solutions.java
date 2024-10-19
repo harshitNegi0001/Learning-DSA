@@ -164,6 +164,24 @@ public class SolutionOfPOTD {
         return numx;
     }
     */
+    /* //19_oct_24
+    String roundToNearest(String str) {
+        char[] temp=str.toCharArray();
+        int n=temp.length-1;
+        if(temp[n]<='5'){
+            temp[n]='0';
+            return String.valueOf(temp);
+        }
+        temp[n--]='0';
+        while(n>=0&&temp[n]=='9'){
+            temp[n]='0';
+            n--;
+        }
+        if(n==-1)return '1'+String.valueOf(temp);
+        temp[n]+=1;
+        return String.valueOf(temp);
+    }
+    */
 	public static void main(String[] args) {
 		
 	}
